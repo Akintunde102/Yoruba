@@ -1,0 +1,284 @@
+<?php include('header.html'); ?>
+
+
+    <!-- Carousel
+    ================================================== -->
+    <div id="homeCarousel" class="carousel slide carousel-home" data-ride="carousel">
+
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#homeCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#homeCarousel" data-slide-to="1"></li>
+          </ol>
+
+          <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+
+              <img src="assets/images/slider/1.jpg" alt="">
+
+              <div class="container">
+
+                <div class="carousel-caption">
+
+                  <h2 class="carousel-title bounceInDown animated slow">Yoruba Dancers Displaying On stage</h2>
+                  <h4 class="carousel-subtitle bounceInUp animated slow ">An Array oF traditionaly Inspired Colours and Moves</h4>
+                </div> <!-- /.carousel-caption -->
+
+              </div>
+
+            </div> <!-- /.item -->
+
+
+            <div class="item ">
+
+              <img src="assets/images/slider/2.jpg" alt="">
+
+              <div class="container">
+
+                <div class="carousel-caption">
+
+                  <h2 class="carousel-title bounceInDown animated slow"> Rich Cultural Outfitted Personalities Explaining </h2>
+                  <h4 class="carousel-subtitle bounceInUp animated slow">The Yoruba Culture Being Explained To Morgan Freeman </h4>
+
+                </div> <!-- /.carousel-caption -->
+
+              </div>
+
+            </div> <!-- /.item -->
+
+          </div>
+
+          <a class="left carousel-control" href="#homeCarousel" role="button" data-slide="prev">
+            <span class="fa fa-angle-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+
+          <a class="right carousel-control" href="#homeCarousel" role="button" data-slide="next">
+            <span class="fa fa-angle-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+
+    </div><!-- /.carousel -->
+
+    <div class="section-home about-us fadeIn animated">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-4 col-sm-12">
+                
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="assets/images/icons/our-mission-icon.png" alt="">
+                        </div>
+                        <h3 class="col-title">Aim & Objectives</h3>
+                        <div class="col-details">
+                          <p><b>1.</b>	 A ko si be fun lilo lasan ni. N je O ye e . Emi ni mo ko awon oro wonyii</p>
+
+                        </div>
+                        <a href="http://<?=$site_address?>/aim.html" class="btn btn-primary"> Read more </a>
+                    
+                  </div>
+                  
+                </div>
+				
+                <div class="col-md-4 col-sm-12">
+                
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="assets/images/icons/help-icon.png" alt="">
+                        </div>
+                        <h3 class="col-title">Mission</h3>
+                        <div class="col-details">
+
+                         <p><b>1.</b> Ohun ti mon so . Emi ni mo ko awon oro wonyii	</p>
+
+                        </div>
+                        <a href="http://<?=$site_address?>/missionandvision.html" class="btn btn-primary"> Read more </a>
+                    
+                  </div>
+                  
+                </div>
+
+                <div class="col-md-4 col-sm-12">
+                
+                  <div class="about-us-col">
+
+                        <div class="col-icon-wrapper">
+                          <img src="assets/images/icons/programs-icon.png" alt="">
+                        </div>
+                        <h3 class="col-title">Vision</h3>
+                        <div class="col-details">
+
+                           <p><b>1.</b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni.</p>
+
+                        </div>
+                        <a href="http://<?=$site_address?>/missionandvision.html" class="btn btn-primary"> Read more </a>
+                    
+                  </div>
+                  
+                </div>
+                
+
+                
+            </div>
+
+        </div>
+      
+    </div> <!-- /.about-us -->
+
+    <div class="section-home home-reasons">
+
+        <div class="container">
+
+            <div class="row">
+                
+                <div class="col-md-6">
+
+                    <div class="reasons-col animate-onscroll fadeIn">
+
+                        <img src="assets/images/reasons/3.jpg" alt="">
+
+                        <div class="reasons-titles">
+
+                            <h3 class="reasons-title">Traditional Yoruba Drummers</h3>
+                            <h5 class="reason-subtitle"><i>Natively called</i> Onilu</h5>
+                            
+                        </div>
+
+                        <div class="on-hover hidden-xs">
+                            
+                                <p> The Yoruba Drums Can be Seen in the Music of Lagbaja and Sunny Ade </p>
+                
+                        </div>
+                    </div>
+                    
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="reasons-col animate-onscroll fadeIn">
+
+                        <img src="assets/images/reasons/4.jpg" alt="">
+
+                        <div class="reasons-titles">
+
+                            <h3 class="reasons-title"> Traditional Yoruba Dancers</h3>
+                            <h5 class="reason-subtitle"><i>Natively called</i> Onijo</h5>
+                            
+                        </div>
+
+                        <div class="on-hover hidden-xs">
+                            
+                                <p> Do you know that Yorubas can also be found in Brazil, Cuba , and the Carribeans</p>
+
+             
+                        </div>
+
+
+                    </div>
+                    
+                </div>
+
+
+            </div>
+          
+  
+
+        </div>
+      
+
+    </div> <!-- /.home-reasons -->
+	
+    <!-- Donate Modal -->
+    <div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="donateModalLabel" aria-hidden="true">
+
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="donateModalLabel">DONATE NOW</h4>
+          </div>
+          <div class="modal-body">
+
+                <form class="form-donation">
+
+                        <h3 class="title-style-1 text-center">Thank you for your donation <span class="title-under"></span>  </h3>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12 ">
+                                <input type="text" class="form-control" id="amount" placeholder="AMOUNT(€)">
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="firstName" placeholder="First name*">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="lastName" placeholder="Last name*">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="email" placeholder="Email*">
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <input type="text" class="form-control" name="phone" placeholder="Phone">
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12">
+                                <input type="text" class="form-control" name="address" placeholder="Address">
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12">
+                                <textarea cols="30" rows="4" class="form-control" name="note" placeholder="Additional note"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+
+                            <div class="form-group col-md-12">
+                                <button type="submit" class="btn btn-primary pull-right" name="donateNow" >DONATE NOW</button>
+                            </div>
+
+                        </div>
+
+
+
+                       
+                    
+                </form>
+            
+          </div>
+        </div>
+      </div>
+
+    </div> <!-- /.modal -->
+
+
+
+<?php include('footer.html'); ?>

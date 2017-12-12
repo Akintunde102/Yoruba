@@ -1,0 +1,64 @@
+<?php include('header.html'); ?>
+
+<div class="page-heading text-center" style="background: black;">
+
+		<div class="container zoomIn animated">
+
+			<h1 class="page-title">Yoruba News<span class="title-under"></span></h1>
+			<p class="page-description">
+			NEWS, PRESS STATEMENTS AND RELEASES
+			</p>
+
+		</div>
+
+	</div>
+
+	<div class="main-container fadeIn animated" style="background: #337ab7 url(http://<?=$site_address?>/assets/images/banner.png);">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-offset-2 col-md-7" style="background: white;">
+
+
+
+				<?php
+			try {
+
+				$stmt = $db->query('SELECT postID, postTitle, postDesc, postDate FROM blog_posts ORDER BY postID DESC');
+				while($row = $stmt->fetch()){
+
+					$urlwords = shorten_words($row['postTitle'],10);
+					$urlwords = code($urlwords,'up');
+
+
+		 echo '<h3 class="title-style-2"><a href="http://'.$site_address.'/'.$row['postID'].'/'.$urlwords.'">'.$row['postTitle'].'</a> <span class="title-under"></span></h3>';
+						//echo '<h4>'.$row['postDesc'].'</h4>';
+						//echo '<p class="blogtext">'.date('jS M Y H:i:s', strtotime($row['postDate'])).'</p>';
+
+						//echo '<p><a  style="color: blue;" href="http://'.$site_address.'/'.$row['postID'].'/'.$urlwords.'">Read More</a>';
+				echo '<br/>';
+
+				}
+
+			} catch(PDOException $e) {
+			    echo $e->getMessage();
+			}
+
+
+		?>
+
+
+
+
+				</div>
+	</div> <!-- /.row -->
+
+
+		</div>
+
+
+
+	</div>
+<?php include('footer.html'); ?>
