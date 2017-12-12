@@ -1,0 +1,11 @@
+<IfModule dir_module>
+    DirectoryIndex index.html
+</IfModule>
+
+<IfModule mime_module>
+AddType application/x-httpd-php .php .html
+</IfModule>
+
+
+RewriteEngine On
+RewriteRule ^([0-9]+)/([a-zA-Z0-9\-\_]+)$ viewpost.php?id=$1
