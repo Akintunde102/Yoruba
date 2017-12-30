@@ -120,9 +120,9 @@ Installation is very easy. Just follow the following steps
 
 
 ## More ScreenShots
-![Preview](http://akin.com.ng/a.PNG)
-![Preview](http://akin.com.ng/b.PNG)
-![Preview](http://akin.com.ng/c.PNG)
+![Preview](http://akin.com.ng/yoruba/a.PNG)
+![Preview](http://akin.com.ng/yoruba/b.PNG)
+![Preview](http://akin.com.ng/yoruba/blog.PNG)
 
 
  
