@@ -77,7 +77,7 @@ users.php<br/>
 reg.php (to Manage registered members)
 
 Below is a preview of the admin page
-admin.png
+![Preview](http://akin.com.ng/yoruba/admin.PNG)
 
 ### Other Pages:
 These are pages that perform other functions apart from the one listed above:
