@@ -47,7 +47,7 @@ This pages are just displaying information. They include:
 $email_to = "you@company.pw"; 
 $email_from = "webmaster@company.pw"; // must be different than $email_from 
 $email_subject = "Contact Form submitted";
-```
+````
 
 
 **aboutus.html** This simply contains information about the entity that owns the website
