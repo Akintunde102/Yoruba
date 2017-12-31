@@ -10,7 +10,7 @@
 **Live Demo Address:** akin.com.ng/yoruba <br/>
 
 ## Short Summary:
-Thsi script is an html template with some php powered pages. It has a php/mysql powered news section that also acts as a blog, it also has a registration page for new members and an admin section for blog and registration adminsitration.
+This script is an html template with some php powered pages. It has a php/mysql powered news section that also acts as a blog, it also has a registration page for new members and an admin section for blog and registration adminsitration.
 
 ## Description:
 This script is built for ethnic or tribal association that want to have a central online portal for all activitites.Thi is the more reason why this script has a member registration page and a news/blog page for press releases. All texts are made using Yoruba-language sort of lorem ipsum.
