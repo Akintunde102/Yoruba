@@ -1,110 +1,12 @@
 <?php include('header.html'); ?>
 
-	<?php
-
-	//if form has been submitted process it
-	if(isset($_POST['submit'])){
-
-		$_POST = array_map( 'stripslashes', $_POST );
-
-		//collect form data
-		extract($_POST);
-
-		
-
-if (!empty($Email)){		
-		$query = $db->prepare("SELECT * FROM members  WHERE Email = ? ");
-$query->bindValue( 1, $Email );
-$query->execute();
-
-if( $query->rowCount() > 0 ) { # If rows are found for query
-     $error[] = 'A form has already been Submitted with this Email';
-}
-	
-
-				}
-		
-		//very basic validation
-		if($Email =='' && count($error) == 0){
-			$error[] = 'Please enter your Email Address.';
-		}
-		
-		
-		if($FullName ==''  && count($error) == 0){
-			$error[] = 'Please enter your Full Name.';
-		}
-
-		if($Year =='' && count($error) == 0 ){
-			$error[] = 'Please enter Your day of Birth.';
-		}
-
-		if($Month =='' &&  count($error) == 0){
-			$error[] = 'Please enter Your Month of Birth.';
-		}
-		
-		
-		if($Day =='' && count($error) == 0){
-			$error[] = 'Please enter Your Day of Birth.';
-		}
-		
-		if($Address =='' && count($error) == 0){
-			$error[] = 'Please enter your Residential Address.';
-		}
-		
-		if($StateO =='' && count($error) == 0){
-			$error[] = 'Please enter your State of Origin.';
-		}
-		
-		if($TownO =='' && count($error) == 0){
-			$error[] = 'Please enter your town of Origin.';
-		}
-		
-		if($PlaceB =='' && count($error) == 0){
-			$error[] = 'Please enter the your Place of birth.';
-		}
-
-		if(!isset($error)){
-
-			try {
-
-				//insert into database
-				$stmt = $db->prepare('INSERT INTO `members`(`FullName`, `Year`, `Month`, `Day`, `Email`, `Address`, `StateO`, `TownO`, `PlaceB`, `regdate`) VALUES (:FullName, :Year, :Month, :Day, :Email, :Address, :StateO, :TownO, :PlaceB, :regdate)') ;
-				$stmt->execute(array(
-					':FullName' => $FullName,
-					':Year' => $Year,
-					':Month' => $Month,
-					':Day' => $Day,
-					':Email' => $Email,
-					':Address' => $Address,
-					':StateO' => $StateO,
-					':TownO' => $TownO,
-					':PlaceB' => $PlaceB,
-					':regdate' => date('Y-m-d H:i:s')
-				));
-
-				//redirect to index page
-				unset($_POST);
-				$_SESSION['success'] = 'Your Membership Registration Has been Successfully Submitted, You will be contacted via Your Email Address Soon';
-				header('Location: registration.html');
-				exit;
-
-			} catch(PDOException $e) {
-			    echo $e->getMessage();
-			}
-
-		}
-
-	}
-
-	?>
-
 	<div class="page-heading text-center" style="background: black;">
 
 		<div class="container zoomIn animated">
 			
-			<h1 class="page-title">AIM & OBJECTIVES<span class="title-under"></span></h1>
+			<h1 class="page-title"><?=$lang['AIM_TITLE']?><span class="title-under"></span></h1>
 			<p class="page-description">
-				lilo lasan ni
+				 <?=$lang['AIM_SUB']?>
 			</p>
 			
 		</div>
@@ -121,20 +23,18 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 
 				
 				
-					<h2 class="title-style-2">Aim & Objectives<span class="title-under"></span></h2>
-
-					Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii
+					<h2 class="title-style-2"><?=$lang['AIM_TITLE2']?><span class="title-under"></span></h2>
+<?=$lang['AIM_1']?>
+					
 					<br/>
 					<br/>
-					<p><b>1.lilo lasan ni	: </b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni.</p>
-<p><b>2.	A ko si be;</b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii</p>
-<p>
-Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii</p>
+					<p><b><?=$lang['AIM_2']?></b><?=$lang['AIM_3']?></p>
+<p><b><?=$lang['AIM_4']?></b><?=$lang['AIM_5']?></p>
 
-<p></b>3.Yoruba Nationalism: </b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii</p>
+<p></b><?=$lang['AIM_7']?><b></p><?=$lang['AIM_8']?> </b><?=$lang['AIM_9']?></p>
 
-<p><b>4.	Protection of Chiefs: </b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii </p>
-<p><b>5.	Awon oro  ti e n ka yii: </b>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii.</p>
+<p><b><?=$lang['AIM_11']?></b><?=$lang['AIM_10']?></b></p>
+<p><b><?=$lang['AIM_12']?> </b><?=$lang['AIM_13']?></p>
 
 					
 					

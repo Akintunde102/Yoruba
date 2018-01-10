@@ -1,9 +1,18 @@
 <!DOCTYPE html>
 <html class="no-js">
-<?php require('includes/config.php');  ?>
+<?php
+
+//Language Processing
+require_once('lang_process.php');
+
+ require('includes/config.php'); 
+
+
+
+ ?>
     <head>
         <meta charset="utf-8">
-        <title>Yoruba</title>
+        <title><?=$lang['title']?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Fonts -->
@@ -68,10 +77,10 @@
 
                   <ul class="nav navbar-nav">
 
-                    <li><a href="http://<?=$site_address?>/index.html">HOME</a></li>
-                    <li><a href="http://<?=$site_address?>/aboutus.html">ABOUT US</a></li>
-                    <li><a href="http://<?=$site_address?>/contactus.html">CONTACT US</a></li>
-                    <li><a href="http://<?=$site_address?>/news.html">NEWS</a></li>
+                    <li><a href="http://<?=$site_address?>/index.html"><?=$lang['MENU_INDEX']?></a></li>
+                    <li><a href="http://<?=$site_address?>/aboutus.html"><?=$lang['MENU_ABOUTUS']?></a></li>
+                    <li><a href="http://<?=$site_address?>/contactus.html"><?=$lang['MENU_CONTACTUS']?></a></li>
+                    <li><a href="http://<?=$site_address?>/news.html"><?=$lang['MENU_EXTRA']?></a></li>
 
                   </ul>
 
@@ -89,7 +98,7 @@
                     <div class="col-sm-6 col-xs-12">
 
                       <div> 
-					  <a href="http://<?=$site_address?>/registration.html" class="btn btn-primary" style="">REGISTER AS A MEMBER</a>
+					  <a href="http://<?=$site_address?>/registration.html" class="btn btn-primary" style=""><?=$lang['MENU_EXTRA2']?></a>
 					  </div>
                     </div>
 

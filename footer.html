@@ -16,13 +16,13 @@
 
                         <div class="footer-col">
 
-                            <h4 class="footer-title">About us <span class="title-under"></span></h4>
+                            <h4 class="footer-title"><?=$lang['FOOTER1']?><span class="title-under"></span></h4>
 
                             <div class="footer-content">
-                              <p>Awon <strong> Yoruba </strong>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii</p>
+                              <p><?=$lang['FOOTER2']?> <strong> <?=$lang['FOOTER3']?> </strong><?=$lang['FOOTER4']?></p>
 
-							  <p>Awon oro  ti e n ka yii  onitumo, A ko si be fun lilo lasan ni. N je O ye e . Ohun ti mon so . Emi ni mo ko awon oro wonyii</p>  
-							  <a href="http://<?=$site_address?>/aboutus.html"> Read More</a>
+							  <p><?=$lang['FOOTER5']?></p>  
+							  <a href="http://<?=$site_address?>/aboutus.html"><?=$lang['RM']?></a>
 
                             </div>
                             
@@ -34,7 +34,7 @@
 
                         <div class="footer-col">
 
-                            <h4 class="footer-title">Contact us <span class="title-under"></span></h4>
+                            <h4 class="footer-title"><?=$lang['CONTACT_TITLE']?><span class="title-under"></span></h4>
 
                             <div class="footer-content">
 
@@ -43,15 +43,15 @@
                                     <form action="http://<?=$site_address?>/php/mail.php"  class="ajax-form">
 
                                         <div class="form-group">
-                                            <input type="text" name="name" class="form-control" placeholder="Name" required>
+                                            <input type="text" name="name" class="form-control" placeholder="<?=$lang['CONTACT_PH1']?>" required>
                                         </div>
 
                                          <div class="form-group">
-                                            <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+                                            <input type="email" name="email" class="form-control" placeholder="<?=$lang['CONTACT_PH2']?>" required>
                                         </div>
 
                                         <div class="form-group">
-                                            <textarea name="message" class="form-control" placeholder="Message" required></textarea>
+                                            <textarea name="message" class="form-control" placeholder="<?=$lang['CONTACT_PH3']?>" required></textarea>
                                         </div>
 
                                         <div class="form-group alerts">
@@ -67,7 +67,7 @@
                                         </div>
 
                                          <div class="form-group">
-                                            <button type="submit"  class="btn btn-submit pull-right">Send message</button>
+                                            <button type="submit"  class="btn btn-submit pull-right"><?=$lang['CONTACT_BUTTON']?></button>
                                         </div>
                                         
                                     </form>

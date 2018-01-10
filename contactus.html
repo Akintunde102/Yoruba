@@ -3,10 +3,9 @@
 
 		<div class="container zoomIn animated" >
 			
-			<h1 class="page-title">Contact Us<span class="title-under"></span></h1>
+			<h1 class="page-title"><?=$lang['CPAGE_TITLE']?><span class="title-under"></span></h1>
 			<p class="page-description">
-		How to get across to us 
-			
+		<?=$lang['CPAGE_TITLE']?>
 			</p>
 			
 		</div>
@@ -22,24 +21,24 @@
 
 				<div class="col-md-7 col-sm-12 col-form">
 
-					<h2 class="title-style-2">CONTACT FORM <span class="title-under"></span></h2>
+					<h2 class="title-style-2"><?=$lang['CPAGE_1']?> <span class="title-under"></span></h2>
 
 					<form action="http://<?=$site_address?>/php/mail.php" class="contact-form ajax-form">
 
 						<div class="row">
 
 							<div class="form-group col-md-6">
-	                            <input type="text" name="name" class="form-control" placeholder="Name*" required="">
+	                            <input type="text" name="name" class="form-control" placeholder="<?=$lang['CPAGE_PH1']?>" required="">
 	                        </div>
 
 	                         <div class="form-group col-md-6">
-	                            <input type="email" name="email" class="form-control" placeholder="E-mail*" required="">
+	                            <input type="email" name="email" class="form-control" placeholder="<?=$lang['CPAGE_PH2']?>" required="">
 	                        </div>
 							
 						</div>
 
                         <div class="form-group">
-                            <textarea name="message" rows="5" class="form-control" placeholder="Message*" required=""></textarea>
+                            <textarea name="message" rows="5" class="form-control" placeholder="<?=$lang['CPAGE_PH3']?>" required=""></textarea>
                         </div>
 
                         <div class="form-group alerts">
@@ -55,7 +54,7 @@
                         </div>	
 
                          <div class="form-group">
-                            <button type="submit" class="btn btn-primary pull-right">Send message</button>
+                            <button type="submit" class="btn btn-primary pull-right"><?=$lang['CPAGE_SB']?></button>
                         </div>
 
                         <div class="clearfix"></div>
@@ -66,18 +65,17 @@
 
 				<div class="col-md-4 col-md-offset-1 col-contact">
 
-					<h2 class="title-style-2"> Yoruba CONTACTS <span class="title-under"></span></h2>
-					<p>
-					Oro nipa wa lowa nisale yii
+					<h2 class="title-style-2"><?=$lang['CPAGE_2']?><span class="title-under"></span></h2>
+					<p><?=$lang['CPAGE_3']?>
 					</p>
 
 					<div class="contact-items">
 
 						<ul class="list-unstyled contact-items-list">
-							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span>6, Ona Ado, Ipade Soosi, Ado</li>
-							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-phone"></i></span> +23409896YORUBA, +234803ODUA</li>
+							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-map-marker"></i></span><?=$lang['C1']?></li>
+							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-phone"></i></span><?=$lang['C2']?></li>
 
-							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span> contact@dummymail.com</li>
+							<li class="contact-item"> <span class="contact-icon"> <i class="fa fa-envelope"></i></span><?=$lang['C3']?></li>
 						</ul>
 					</div>
 

@@ -5,7 +5,7 @@
  * ===================================================== */
 $email_to = "you@company.pw"; 
 $email_from = "webmaster@company.pw"; // must be different than $email_from 
-$email_subject = "Contact Form submitted";
+$email_subject = $lang['MAIL_SUCCESS'];
 
 if(isset($_POST['email']))
 {
@@ -21,7 +21,7 @@ if(isset($_POST['email']))
         !isset($_POST['email']) ||
         !isset($_POST['message']))
     {
-        return_error('Please fill in all required fields.');
+        return_error($lang['MAIL_ERROR_9']);
     }
 
     // form field values
@@ -36,14 +36,14 @@ if(isset($_POST['email']))
     $name_exp = "/^[a-z0-9 .\-]+$/i";
     if (!preg_match($name_exp,$name))
     {
-        $this_error = 'Please enter a valid name.';
+        $this_error = $lang['MAIL_ERROR_1'];
         $error_message .= ($error_message == "") ? $this_error : "<br/>".$this_error;
     }        
 
     $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
     if (!preg_match($email_exp,$email))
     {
-        $this_error = 'Please enter a valid email address.';
+        $this_error = $lang['MAIL_ERROR_2'];
         $error_message .= ($error_message == "") ? $this_error : "<br/>".$this_error;
     } 
 
@@ -54,7 +54,7 @@ if(isset($_POST['email']))
     }
 
     // prepare email message
-    $email_message = "Form details below.\n\n";
+    $email_message = $lang['MAIL_ERROR_3'];
 
     function clean_string($string)
     {
@@ -62,9 +62,9 @@ if(isset($_POST['email']))
         return str_replace($bad, "", $string);
     }
 
-    $email_message .= "Name: ".clean_string($name)."\n";
-    $email_message .= "Email: ".clean_string($email)."\n";
-    $email_message .= "Message: ".clean_string($message)."\n";
+    $email_message .= $lang['MAIL_1']": ".clean_string($name)."\n";
+    $email_message .= $lang['MAIL_2']": ".clean_string($email)."\n";
+    $email_message .= $lang['MAIL_3']": ".clean_string($message)."\n";
 
     // create email headers
     $headers = 'From: '.$email_from."\r\n".
@@ -72,18 +72,18 @@ if(isset($_POST['email']))
     'X-Mailer: PHP/' . phpversion();
     if (@mail($email_to, $email_subject, $email_message, $headers))
     {
-        echo json_encode(array('success'=>1, 'message'=>'Form submitted successfully.')); 
+        echo json_encode(array('success'=>1, 'message'=>$lang['MAIL_SUCCESS2'])); 
     }
 
     else 
     {
-        echo json_encode(array('success'=>0, 'message'=>'An error occured. Please try again later.')); 
+        echo json_encode(array('success'=>0, 'message'=>$lang['MAIL_ERROR_5'])); 
         die();        
     }
 }
 else
 {
-    echo 'Please fill in all required fields.';
+    echo $lang['MAIL_ERROR4'];
     die();
 }
 ?>

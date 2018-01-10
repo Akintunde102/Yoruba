@@ -18,7 +18,7 @@ $query->bindValue( 1, $Email );
 $query->execute();
 
 if( $query->rowCount() > 0 ) { # If rows are found for query
-     $error[] = 'A form has already been Submitted with this Email';
+     $error[] = $lang['REG_ERROR_1'];
 }
 	
 
@@ -26,43 +26,43 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 		
 		//very basic validation
 		if($Email =='' && count($error) == 0){
-			$error[] = 'Please enter your Email Address.';
+			$error[] = $lang['REG_ERROR_2'];
 		}
 		
 		
 	
 		
 		if($FullName ==''  && count($error) == 0){
-			$error[] = 'Please enter your Full Name.';
+			$error[] = $lang['REG_ERROR_3'];
 		}
 
 		if($Year =='' && count($error) == 0 ){
-			$error[] = 'Please enter Your day of Birth.';
+			$error[] = $lang['REG_ERROR_4'];
 		}
 
 		if($Month =='' &&  count($error) == 0){
-			$error[] = 'Please enter Your Month of Birth.';
+			$error[] = $lang['REG_ERROR_5'];
 		}
 		
 		
 		if($Day =='' && count($error) == 0){
-			$error[] = 'Please enter Your Day of Birth.';
+			$error[] = $lang['REG_ERROR_6'];
 		}
 		
 		if($Address =='' && count($error) == 0){
-			$error[] = 'Please enter your Residential Address.';
+			$error[] = $lang['REG_ERROR_7'];
 		}
 		
 		if($StateO =='' && count($error) == 0){
-			$error[] = 'Please enter your State of Origin.';
+			$error[] = $lang['REG_ERROR_8'];
 		}
 		
 		if($TownO =='' && count($error) == 0){
-			$error[] = 'Please enter your town of Origin.';
+			$error[] = $lang['REG_ERROR_9'];
 		}
 		
 		if($PlaceB =='' && count($error) == 0){
-			$error[] = 'Please enter the your Place of birth.';
+			$error[] = $lang['REG_ERROR_10'];
 		}
 		
 			if(isset($_FILES['image'])){
@@ -75,18 +75,18 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 		
 		$expensions= array("jpeg","jpg","png"); 		
 		if(in_array($file_ext,$expensions)=== false){
-			$error[]="extension not allowed, please choose a JPEG or PNG file.";
+			$error[]=$lang['REG_ERROR_11'];
 		}
 		if($file_size > 500000){
-		$error[]='File must be 500kb or less';
+		$error[]=$lang['REG_ERROR_12'];
 		}				
 		if(empty($error)==true){
 		$destination = "passport/".$file_name;
 			move_uploaded_file($file_tmp,$destination);
-			echo "Success";
+			echo $lang['REG_SUCCESS_1'];
 		}
 	}
-	else if (count($error) == 0) {$error[] = 'Please Upload Your Passport Photograph';}
+	else if (count($error) == 0) {$error[] = $lang['REG_ERROR_13'];}
 		
 		
 
@@ -112,7 +112,7 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 
 				//redirect to index page
 				unset($_POST);
-				$_SESSION['success'] = 'Your Membership Registration Has been Successfully Submitted, You will be contacted via Your Email Address Soon';
+				$_SESSION['success'] = $lang['REG_SUCCESS_2'];
 				header('Location: registration.html');
 				exit;
 
@@ -129,9 +129,9 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 	<div class="page-heading text-center" style="background: black;">
 
 		<div class="container zoomIn animated">
-			<h1 class="page-title">MEMBERSHIP REGISTRATION <span class="title-under"></span></h1>
+			<h1 class="page-title"><?=$lang['REG_TITLE']?><span class="title-under"></span></h1>
 			<p class="page-description">
-			Register to be a Member Here	
+			<?=$lang['REG_TITLE_SUB']?>	
 			</p>
 			
 		</div>
@@ -148,7 +148,7 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 
 				
 				
-					<h2 class="title-style-2">Membership Registration<span class="title-under"></span></h2>
+					<h2 class="title-style-2"><?=$lang['REG_FORM_TITLE']?><span class="title-under"></span></h2>
 
 					
 					
@@ -176,17 +176,17 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 	} ?>
 							
 					<form action="http://<?=$site_address?>/registration.html" method='post' style="margin-bottom: 10px;" enctype="multipart/form-data">
-					<p> *All fields are compulsory</p>
+					<p> <?=$lang['REG_FORM_1']?></p>
 						<div class="row">
 						<div class="form-group col-md-12">
-                            <input name="FullName"  value='<?php if(isset($error)){ echo $_POST['FullName'];}?>' class="form-control" placeholder="Full Name*" required />
+                            <input name="FullName"  value='<?php if(isset($error)){ echo $_POST['FullName'];}?>' class="form-control" placeholder="<?=$lang['REG_FORM_2']?>" required />
                         </div>
                         </div>
 						
 						<div class="row">
-						<label class="form-group col-md-3 control-label">	<h3 style="margin: 0 0 0 0;" >Passport Photograph* :</h3></label>
+						<label class="form-group col-md-3 control-label">	<h3 style="margin: 0 0 0 0;" ><?=$lang['REG_FORM_3']?>:</h3></label>
 						<div class="form-group col-md-9">
-                            <input name="image" type="file" class="form-control" placeholder="Passport Image" required />
+                            <input name="image" type="file" class="form-control" placeholder="<?=$lang['REG_FORM_4']?>" required />
                         </div>
                         </div>
 						
@@ -195,90 +195,81 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 
 						<div class="row">
 					    
-						<label class="form-group col-md-3 control-label">	<h3 style="margin: 0 0 0 0;" >Date of Birth* :</h3></label>
+						<label class="form-group col-md-3 control-label">	<h3 style="margin: 0 0 0 0;" ><?=$lang['REG_FORM_5']?>:</h3></label>
 					
 							
 							<div class="form-group col-md-3">
-							<select name="Year" class="form-control" placeholder="Year*" required>
-                        <option value="">Year*</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1998'){echo 'selected';}?>>1998</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1997'){echo 'selected';}?>>1997</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1996'){echo 'selected';}?>>1996</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1995'){echo 'selected';}?>>1995</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1994'){echo 'selected';}?>>1994</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1993'){echo 'selected';}?>>1993</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1992'){echo 'selected';}?>>1992</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1991'){echo 'selected';}?>>1991</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1990'){echo 'selected';}?>>1990</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1989'){echo 'selected';}?>>1989</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1988'){echo 'selected';}?>>1988</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1987'){echo 'selected';}?>>1987</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1986'){echo 'selected';}?>>1986</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1985'){echo 'selected';}?>>1985</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1984'){echo 'selected';}?>>1984</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1983'){echo 'selected';}?>>1983</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1982'){echo 'selected';}?>>1982</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1981'){echo 'selected';}?>>1981</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1980'){echo 'selected';}?>>1980</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1979'){echo 'selected';}?>>1979</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1978'){echo 'selected';}?>>1978</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1977'){echo 'selected';}?>>1977</option>
-                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1976'){echo 'selected';}?>>1976</option>
+							<select name="Year" class="form-control"  required>
+                        <option value=""><?=$lang['REG_FORM_Y']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1998'){echo 'selected';}?>><?=$lang['REG_FORM_Y1998']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1997'){echo 'selected';}?>><?=$lang['REG_FORM_Y1997']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1996'){echo 'selected';}?>><?=$lang['REG_FORM_Y1996']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1995'){echo 'selected';}?>><?=$lang['REG_FORM_Y1995']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1994'){echo 'selected';}?>><?=$lang['REG_FORM_Y1994']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1993'){echo 'selected';}?>><?=$lang['REG_FORM_Y1993']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1992'){echo 'selected';}?>><?=$lang['REG_FORM_Y1992']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1991'){echo 'selected';}?>><?=$lang['REG_FORM_Y1991']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1990'){echo 'selected';}?>><?=$lang['REG_FORM_Y1990']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1989'){echo 'selected';}?>><?=$lang['REG_FORM_Y1989']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1988'){echo 'selected';}?>><?=$lang['REG_FORM_Y1988']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1987'){echo 'selected';}?>><?=$lang['REG_FORM_Y1987']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1986'){echo 'selected';}?>><?=$lang['REG_FORM_Y1986']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Year']) && $_POST['Year'] == '1985'){echo 'selected';}?>><?=$lang['REG_FORM_Y1985']?></option>
                       </select>
 	                        </div>
 
 	                         <div class="form-group col-md-3">
-	                       <select name="Month" class="form-control" placeholder="Month*" required>
-                        <option value="">Month*</option>
-                        <option  <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'January'){echo 'selected';}?>>January</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'February'){echo 'selected';}?>>february</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'March'){echo 'selected';}?>>March</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'April'){echo 'selected';}?>>April</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'May'){echo 'selected';}?>>May</option>
-						 <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'June'){echo 'selected';}?>>June</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'July'){echo 'selected';}?>>July</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'August'){echo 'selected';}?>>August</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'September'){echo 'selected';}?>>September</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'October'){echo 'selected';}?>>October</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'Novemeber'){echo 'selected';}?>>November</option>
-                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'December'){echo 'selected';}?>>December</option>
+	                       <select name="Month" class="form-control"  required>
+                        <option value=""><?=$lang['REG_FORM_M']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'January'){echo 'selected';}?>><?=$lang['REG_FORM_M1']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'February'){echo 'selected';}?>><?=$lang['REG_FORM_M2']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'March'){echo 'selected';}?>><?=$lang['REG_FORM_M3']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'April'){echo 'selected';}?>><?=$lang['REG_FORM_M4']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'May'){echo 'selected';}?>><?=$lang['REG_FORM_M5']?></option>
+						 <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'June'){echo 'selected';}?>><?=$lang['REG_FORM_M6']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'July'){echo 'selected';}?>><?=$lang['REG_FORM_M7']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'August'){echo 'selected';}?>><?=$lang['REG_FORM_M8']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'September'){echo 'selected';}?>><?=$lang['REG_FORM_M9']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'October'){echo 'selected';}?>><?=$lang['REG_FORM_M10']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'Novemeber'){echo 'selected';}?>><?=$lang['REG_FORM_M11']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['Month']) && $_POST['Month'] == 'December'){echo 'selected';}?>><?=$lang['REG_FORM_M12']?></option>
                       </select> </div>
 							
 							
 	                         <div class="form-group col-md-3">
-	                       <select name="Day" class="form-control" placeholder="Day*" required>
-                        <option value="">Day*</option>
-                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '1'){echo 'selected';}?>>1</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '2'){echo 'selected';}?>>2</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '3'){echo 'selected';}?>>3</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '4'){echo 'selected';}?>>4</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '5'){echo 'selected';}?>>5</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '6'){echo 'selected';}?>>6</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '7'){echo 'selected';}?>>7</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '8'){echo 'selected';}?>>8</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '9'){echo 'selected';}?>>9</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '10'){echo 'selected';}?>>10</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '11'){echo 'selected';}?>>11</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '12'){echo 'selected';}?>>12</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '13'){echo 'selected';}?>>13</option>
-                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '14'){echo 'selected';}?>>14</option>
-                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '15'){echo 'selected';}?>>15</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '16'){echo 'selected';}?>>16</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '17'){echo 'selected';}?>>17</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '18'){echo 'selected';}?>>18</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '19'){echo 'selected';}?>>19</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '20'){echo 'selected';}?>>20</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '21'){echo 'selected';}?>>21</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '22'){echo 'selected';}?>>22</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '23'){echo 'selected';}?>>23</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '24'){echo 'selected';}?>>24</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '25'){echo 'selected';}?>>25</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '26'){echo 'selected';}?>>26</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '27'){echo 'selected';}?>>27</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '28'){echo 'selected';}?>>28</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '29'){echo 'selected';}?>>29</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '30'){echo 'selected';}?>>30</option>
-                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '31'){echo 'selected';}?>>31</option>
+	                       <select name="Day" class="form-control"  required>
+                        <option value=""><?=$lang['REG_FORM_D']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '1'){echo 'selected';}?>><?=$lang['REG_FORM_D1']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '2'){echo 'selected';}?>><?=$lang['REG_FORM_D2']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '3'){echo 'selected';}?>><?=$lang['REG_FORM_D3']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '4'){echo 'selected';}?>><?=$lang['REG_FORM_D4']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '5'){echo 'selected';}?>><?=$lang['REG_FORM_D5']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '6'){echo 'selected';}?>><?=$lang['REG_FORM_D6']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '7'){echo 'selected';}?>><?=$lang['REG_FORM_D7']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '8'){echo 'selected';}?>><?=$lang['REG_FORM_D8']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '9'){echo 'selected';}?>><?=$lang['REG_FORM_D9']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '10'){echo 'selected';}?>><?=$lang['REG_FORM_D10']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '11'){echo 'selected';}?>><?=$lang['REG_FORM_D11']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '12'){echo 'selected';}?>><?=$lang['REG_FORM_D12']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '13'){echo 'selected';}?>><?=$lang['REG_FORM_D13']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '14'){echo 'selected';}?>><?=$lang['REG_FORM_D14']?></option>
+                        <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '15'){echo 'selected';}?>><?=$lang['REG_FORM_D15']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '16'){echo 'selected';}?>><?=$lang['REG_FORM_D16']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '17'){echo 'selected';}?>><?=$lang['REG_FORM_D17']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '18'){echo 'selected';}?>><?=$lang['REG_FORM_D18']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '19'){echo 'selected';}?>><?=$lang['REG_FORM_D19']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '20'){echo 'selected';}?>><?=$lang['REG_FORM_D20']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '21'){echo 'selected';}?>><?=$lang['REG_FORM_D21']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '22'){echo 'selected';}?>><?=$lang['REG_FORM_D22']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '23'){echo 'selected';}?>><?=$lang['REG_FORM_D23']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '24'){echo 'selected';}?>><?=$lang['REG_FORM_D24']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '25'){echo 'selected';}?>><?=$lang['REG_FORM_D25']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '26'){echo 'selected';}?>><?=$lang['REG_FORM_D26']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '27'){echo 'selected';}?>><?=$lang['REG_FORM_D27']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '28'){echo 'selected';}?>><?=$lang['REG_FORM_D28']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '29'){echo 'selected';}?>><?=$lang['REG_FORM_D29']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '30'){echo 'selected';}?>><?=$lang['REG_FORM_D30']?></option>
+                        <option  <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['Day'] == '31'){echo 'selected';}?>><?=$lang['REG_FORM_D31']?></option>
                       </select> </div>
 							
 						</div>
@@ -286,20 +277,20 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 						
 						<div class="row">
 						<div class="form-group col-md-12">
-                            <input value='<?php if(isset($error)){ echo $_POST['Email'];}?>' type="email" name="Email" class="form-control" placeholder="Email Address*" required />
+                            <input value='<?php if(isset($error)){ echo $_POST['Email'];}?>' type="email" name="Email" class="form-control" placeholder="<?=$lang['REG_FORM_PH1']?>" required />
                         </div>
                         </div>
 						
 						<div class="row">
 						<div class="form-group col-md-12">
-                            <input value='<?php if(isset($error)){ echo $_POST['Address'];}?>' type="text" name="Address" class="form-control" placeholder="Residential Address*" required />
+                            <input value='<?php if(isset($error)){ echo $_POST['Address'];}?>' type="text" name="Address" class="form-control" placeholder="<?=$lang['REG_FORM_PH2']?>" required />
                         </div>
                         </div>
 						
 						<div class="row">
 						   <div class="form-group col-md-6">
 	                       <select name="StateO" class="form-control" placeholder="" required>
-                        <option>State of Origin*</option>
+                        <option><?=$lang['REG_FORM_PH3']?></option>
                         <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['StateO'] == 'Ondo'){echo 'selected';}?>>Ondo</option>
                         <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['StateO'] == 'Ekiti'){echo 'selected';}?>>Ekiti</option>
                         <option <?php if(isset($error) && !empty($_POST['StateO']) && $_POST['StateO'] == 'Osun'){echo 'selected';}?>>Osun</option>
@@ -311,7 +302,7 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 					  
 					  
 					    <div class="form-group col-md-6">
-                            <input value='<?php if(isset($error)){ echo $_POST['TownO'];}?>' type="text" name="TownO" class="form-control" placeholder="Town of Origin*" required />
+                            <input value='<?php if(isset($error)){ echo $_POST['TownO'];}?>' type="text" name="TownO" class="form-control" placeholder="<?=$lang['REG_FORM_PH4']?>" required />
                         </div>
 						
                       </div>
@@ -319,7 +310,7 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
 					  
 	<div class="row">
    <div class="form-group col-md-12">
-                            <input  value='<?php if(isset($error)){ echo $_POST['PlaceB'];}?>' type="text" name="PlaceB" class="form-control" placeholder="Place of Birth*" required />
+                            <input  value='<?php if(isset($error)){ echo $_POST['PlaceB'];}?>' type="text" name="PlaceB" class="form-control" placeholder="<?=$lang['REG_FORM_PH5']?>" required />
                         </div>					  
                         </div>					  
 					  
@@ -331,7 +322,7 @@ if( $query->rowCount() > 0 ) { # If rows are found for query
                         
 
                          <div class="form-group">
-                            <input type="submit" class="form-group col-md-12 btn btn-primary " name='submit' value='Submit' />
+                            <input type="submit" class="form-group col-md-12 btn btn-primary " name='submit' value='<?=$lang['REG_FORM_SB']?>' />
                         </div>
 
                         <div class="clearfix"></div>
