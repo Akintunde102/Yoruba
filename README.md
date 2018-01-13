@@ -110,11 +110,11 @@ Installation is very easy. Just follow the following steps
 
 
 ## How to contribute new translations
-With the version 2.0, new translations can now be added without needing to understand  how to understanding how to code. Below are the procedures.
+With the version 2.0, new translations can now be added without need to understand how to code. Below are the procedures.
 
-1. Got to the /lang/
+1. Got to the /lang/ folder
 2. Copy the contents of the language file you want to translate from 
-3. Then create your new language file and name it using the stated naming convention of other language
+3. Then create your new language file and name it using the stated naming convention of other language files in the folder
    For instance, to convert from english to french, you would have copy the contents of `lang.en.php` to a newly created file you would     name `lang.fr.php`.
 4. Then change every variable content in the file to the new language as shown in the instance:
   for instance, $lang['SLIDER1'] = `Yoruba Dancers Displaying On stage';` would become `Yoruba Dancers Affichage sur scène` for an English to French translation.
