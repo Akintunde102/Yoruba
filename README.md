@@ -49,6 +49,9 @@ $email_from = "webmaster@company.pw"; // must be different than $email_from
 $email_subject = "Contact Form submitted";
 ````
 
+### Language Processing File (lang_process.php)
+This file processes user's language choice and then save it as a cookie and then include the choosen language file from the /lang/ folder through php include 
+
 
 **aboutus.html** This simply contains information about the entity that owns the website
 
@@ -84,14 +87,13 @@ These are pages that perform other functions apart from the one listed above:
 header.html (Site Header)
 footer.html (site footer)
 
-
 ### Folders:
 #### Uploader: This contain file Upload script for uploading images while writing or updating blog. (This is yet to be automated)
 #### Classes: This contain classes that are being used by the script.
 #### Admin: contain all previously stated admin files
 #### Includes: This contains config.php that houses db access details (Note: This Script Uses PDO database calls, so be mindful of the standard database protocols for PDO)
 #### css,fonts,js,styles: These folders contain all front end dependencies
-
+#### lang: This folder contains language translation files
 
 All other unstated files should be considered trivial.
 
