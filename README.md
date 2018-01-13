@@ -127,7 +127,11 @@ take note, that every language has certain codes that needs to be rightly inpute
 - the `lang_process.php` controls the detection and saving of language codes through the use of cookie
 ` translations are saved in the `/lang/` folder.
 
-## Initial Version
+## Intial Version
+1.0
+
+
+## Present Version
 2.0
 
 
