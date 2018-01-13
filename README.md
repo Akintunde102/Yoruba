@@ -109,8 +109,31 @@ Installation is very easy. Just follow the following steps
 4. Just view from your server domain name (or from localhost if you are in a local environment)
 
 
+## How to contribute new translations
+With the version 2.0, new translations can now be added without needing to understand  how to understanding how to code. Below are the procedures.
+
+1. Got to the /lang/
+2. Copy the contents of the language file you want to translate from 
+3. Then create your new language file and name it using the stated naming convention of other language
+   For instance, to convert from english to french, you would have copy the contents of `lang.en.php` to a newly created file you would     name `lang.fr.php`.
+4. Then change every variable content in the file to the new language as shown in the instance:
+  for instance, $lang['SLIDER1'] = `Yoruba Dancers Displaying On stage';` would become `Yoruba Dancers Affichage sur scène` for an English to French translation.
+  
+take note, that every language has certain codes that needs to be rightly inputed in the naming convention. Some of this naming conventions can be found [here](http://www.lingoes.net/en/translator/langcode.htm). Any code not listed here can be created by discretion.
+
+
+## How Translation Works
+- Every translation version of the site can be called by appending the language code after a slash like this `example.com/en`, after thsis subsequent site pages don't need the appedning as the sote has been saved as a cookie
+- the `lang_process.php` controls the detection and saving of language codes through the use of cookie
+` translations are saved in the `/lang/` folder.
+
 ## Initial Version
-1.0
+2.0
+
+
+## Changelog
+2.0: Addition of Multi-Language Support
+
 
 ## Contact Me
 **Discord**: @akintunde <br/>
